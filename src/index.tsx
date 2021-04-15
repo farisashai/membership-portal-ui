@@ -18,6 +18,11 @@ import AwardPointsPage from './admin/containers/AwardPointsPage';
 import EditEventPage from './admin/containers/EditEventPage';
 import CreateEventPage from './admin/containers/CreateEventPage';
 
+/* Store Pages */
+import AdminOrderPage from './store/containers/AdminOrderPage';
+import CheckoutPage from './store/containers/CheckoutPage';
+import EditStoreCollection from './store/containers/EditStoreCollection';
+
 import AuthPage from './auth/containers/AuthPage';
 import CheckInHandler from './event/containers/CheckInHandler';
 import DiscordPage from './layout/containers/DiscordPage';
@@ -29,15 +34,13 @@ import ResetPage from './auth/containers/ResetPage';
 import ProfilePage from './profile/containers/ProfilePage';
 import ProfileUpdatePage from './profile/containers/ProfileUpdatePage';
 import RegisterPage from './auth/containers/RegisterPage';
-// Comment import until Store Page is released and added back to router
-// import StorePage from './store/containers/StorePage';
+import StorePage from './store/containers/StorePage';
 import ErrorPage from './layout/containers/ErrorPage';
 import EmailVerficationPage from './auth/containers/EmailVerificationPage';
 import ResendEmailVerificationPage from './auth/containers/ResendEmailVerificationPage';
 import requireAuth from './auth/containers/requireAuth';
 import requireAdminAuth from './auth/containers/requireAdminAuth';
-// Comment import until Store Page is released and added back to router
-// import requireStandardAccess from './auth/containers/requireStandardAccess';
+import requireStandardAccess from './auth/containers/requireStandardAccess';
 
 const store = configureStore();
 
@@ -67,15 +70,10 @@ const App = () => {
             <Route exact path="/editProfile" component={requireAuth(ProfileUpdatePage) as React.FC} />
             <Route exact path="/register" component={RegisterPage} />
             <Route exact path="/resetPassword/:code" component={ResetPage} />
-            <Route
-              exact
-              path="/store"
-              component={() => {
-                window.location.href = 'https://www.youtube.com/watch?v=iik25wqIuFo';
-                return null;
-              }}
-            />
-            {/* <Route exact path="/store" component={requireStandardAccess(requireAuth(StorePage)) as React.FC} /> */}
+            <Route exact path="/store" component={requireStandardAccess(requireAuth(StorePage)) as React.FC} />
+            <Route exact path="/admin/store/orders" component={requireAdminAuth(AdminOrderPage)} />
+            <Route exact path="/admin/store/checkout" component={requireAdminAuth(CheckoutPage)} />
+            <Route exact path="/admin/editStore" component={requireAdminAuth(EditStoreCollection) as React.FC} />
             <Route exact path="/verifyEmail/:code" component={EmailVerficationPage} />
             <Route exact path="/resendEmailVerification" component={requireAuth(ResendEmailVerificationPage) as React.FC} />
             <Route exact path="/" component={requireAuth(HomePage) as React.FC} />

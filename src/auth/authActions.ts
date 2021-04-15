@@ -14,6 +14,7 @@ import {
 import Config from '../config';
 import Storage from '../storage';
 import { notify, fetchService } from '../utils';
+import { User } from '../types';
 
 /**
  * Helper function to get token claims.
@@ -254,7 +255,7 @@ export const fetchUser: ThunkActionCreator = (uuid) => async (dispatch) => {
 };
 
 export const fetchUserByID = async (uuid: string) => {
-  return new Promise(async (resolve, reject) => {
+  return new Promise<User>(async (resolve, reject) => {
     try {
       const url = `${Config.API_URL}${Config.routes.user.user}/${uuid}`;
       const data = await fetchService(url, 'GET', 'json', {

@@ -15,6 +15,7 @@ const initialState = {
     firstName: '',
     lastName: '',
     points: 0,
+    credits: 0,
     graduationYear: 0,
     profilePicture: defaultProfile,
   },

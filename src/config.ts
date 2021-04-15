@@ -36,5 +36,9 @@ export default {
     },
     attendance: '/api/v2/attendance',
     leaderboard: '/api/v2/leaderboard',
+    store: {
+      collection: '/api/v2/merch/collection',
+      order: '/api/v2/merch/order',
+    },
   },
 };

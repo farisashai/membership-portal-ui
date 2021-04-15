@@ -26,6 +26,22 @@ const AdminPage: React.FC = () => {
       >
         Create Event
       </Button>
+      <Button
+        className="admin-redirect-button"
+        onClick={() => {
+          history.push('/admin/store/orders');
+        }}
+      >
+        Store Orders
+      </Button>
+      <Button
+        className="admin-redirect-button"
+        onClick={() => {
+          history.push('/admin/store/checkout');
+        }}
+      >
+        Store Checkout
+      </Button>
     </div>
   );
 };

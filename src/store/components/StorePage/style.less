@@ -3,29 +3,48 @@
 .store-page {
   color: @black;
 
-  h1 {
-    font-size: @general-heading-1;
-    font-weight: 700;
+  .store-header {
+    display: flex;
   }
 
-  // TODO: Remove coming soon section.
-  .coming-soon {
-    display: flex;
-    flex-wrap: wrap;
-    font-size: @general-heading-2;
-    height: 50vh;
-    justify-content: center;
-    margin-top: 20vh;
-    width: 100%;
+  .admin-btn {
+    align-self: center;
+  }
 
-    .temp-icon {
-      flex: 0 0 100%;
-      font-size: 200px;
-      opacity: 0.2;
+  h1 {
+    display: inline-block;
+    font-size: @general-heading-1;
+    font-weight: 700;
+    margin-right: 20px;
+  }
+
+  button {
+    border: 1px solid black;
+    margin-right: 40px;
+    vertical-align: text-bottom;
+  }
+
+  .ant-btn-danger {
+    border: initial;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .store-page {
+    .store-header {
+      flex-direction: column;
+
+      h1 {
+        margin: 20px 0;
+      }
+
+      .admin-btn {
+        align-self: start;
+      }
     }
 
-    p {
-      opacity: 0.8;
+    button {
+      margin-left: 0;
     }
   }
 }
