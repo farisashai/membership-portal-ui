@@ -6,12 +6,14 @@ import './style.less';
 // move these actions elsewhere later
 const editItem = (itemData: Item) => () => {
   // itemData.id is some id of the item
-  console.log(itemData);
+  // console.log(itemData);
+  return itemData; // linting placeholder
 };
 
 const deleteItem = (itemData: Item) => () => {
   // itemData.id is some id of the item
-  console.log(itemData);
+  // console.log(itemData);
+  return itemData; // linting placeholder
 };
 
 // should be moved somewhere else
@@ -39,8 +41,9 @@ const CheckoutCart = ({ store }: CheckoutCartPropTypes) => {
   const [data, setData] = useState<Array<CheckoutCartItem>>([]);
   const quantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const quantity = e.target.value;
-    console.log(quantity);
+    // console.log(quantity);
     // do something with cart state here.
+    return quantity; // linting placeholder
   };
   const columns = [
     {
@@ -48,14 +51,7 @@ const CheckoutCart = ({ store }: CheckoutCartPropTypes) => {
       dataIndex: 'item',
       key: 'item',
       render: (itemData: Item) => {
-        return (
-          <ItemMiniDisplay
-            name={itemData.name}
-            image={itemData.image}
-            edit={editItem(itemData)}
-            remove={deleteItem(itemData)}
-          />
-        );
+        return <ItemMiniDisplay name={itemData.name} image={itemData.image} edit={editItem(itemData)} remove={deleteItem(itemData)} />;
       },
     },
     {
@@ -71,14 +67,7 @@ const CheckoutCart = ({ store }: CheckoutCartPropTypes) => {
       dataIndex: 'quantity',
       key: 'quantity',
       render: (quantity: number) => {
-        return (
-          <Input
-            className="quant-input"
-            defaultValue={quantity}
-            type="number"
-            onChange={quantityChange}
-          />
-        );
+        return <Input className="quant-input" defaultValue={quantity} type="number" onChange={quantityChange} />;
       },
     },
     {

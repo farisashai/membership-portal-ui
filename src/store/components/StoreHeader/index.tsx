@@ -37,9 +37,7 @@ const CartLink: React.FC<CartLinkProps> = (props) => {
   return (
     <Link to="/cart" className="cart-link">
       Checkout
-      <span className="cart-icon">
-        {cartItems > 0 ? <span className="cart-quantity">{cartItems}</span> : ''}
-      </span>
+      <span className="cart-icon">{cartItems > 0 ? <span className="cart-quantity">{cartItems}</span> : ''}</span>
     </Link>
   );
 };

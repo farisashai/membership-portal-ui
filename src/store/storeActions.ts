@@ -3,7 +3,7 @@ import { COLLECTION_ERROR, FETCH_COLLECTIONS, ThunkActionCreator } from './store
 import Config from '../config';
 import Storage from '../storage';
 import { notify } from '../utils';
-import { fetchUserByID } from '../auth/authActions';
+import { fetchUserByID, logoutUser } from '../auth/authActions';
 import { Order, PatchOrderItemPayload, User } from '../types';
 
 /**
@@ -141,7 +141,7 @@ export const editCollection: ThunkActionCreator = (newData) => async (dispatch) 
 
       const { status } = response;
       if (status === 401 || status === 403) {
-        // dispatch(logoutUser()); // TODO
+        dispatch(logoutUser()); // TODO
       }
 
       const data = await response.json();
